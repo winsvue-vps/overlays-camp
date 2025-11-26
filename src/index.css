@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: #5e5b64;
+  border-radius: 1rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #568eff;
+  border-radius: 0.9375rem;
+}
+
+body {
+  background-color: #091422;
+  font-family: 'Kanit', sans-serif;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.silverGradient {
+  background: linear-gradient(
+    180deg,
+    rgba(163, 163, 163, 0) 6.92%,
+    rgba(163, 163, 163, 0.451206) 32.69%,
+    rgba(163, 163, 163, 0.147001) 62.73%,
+    rgba(163, 163, 163, 0) 85.17%
+  );
+}
+
+.goldenGradient {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 192, 45, 0) -4.44%,
+    rgba(255, 192, 45, 0.451206) 28.55%,
+    rgba(255, 192, 45, 0.104044) 65.44%,
+    rgba(255, 192, 45, 0) 92.62%
+  );
+}
+
+.bronzeGradient {
+  background: linear-gradient(
+    180deg,
+    rgba(167, 107, 77, 0) 6.92%,
+    rgba(167, 107, 77, 0.451206) 32.69%,
+    rgba(167, 107, 77, 0.147001) 62.73%,
+    rgba(167, 107, 77, 0) 85.17%
+  );
+}
+
+.clippings {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+}
+
+.killsFrame {
+  clip-path: url(#killsFrame);
+}
+
+.hexagonClip {
+  clip-path: url(#hexagonClip);
+}

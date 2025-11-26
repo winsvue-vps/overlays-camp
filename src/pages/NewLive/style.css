@@ -1,0 +1,105 @@
+
+svg.clippy {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+}
+
+.timer-container{
+   /* clip-path: url(#timer-bg); */
+}
+
+* {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes shimmer {
+  0%, 100% { color: #fff; }
+  50% { color: var(--shimmering-color); }
+}
+
+.points-clip-path {
+  clip-path: polygon(
+    9.61% 0%,
+    91% 0%,
+    100% 48.75%,
+    91.75% 100%,
+    8.85% 100%,
+    0% 48.75% 
+  );
+  background-color: #568eff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex {
+  background: none; 
+  clip-path: polygon(
+    50% 0%, 
+    0% 25%, 
+    0% 75%, 
+    50% 100%, 
+    100% 75%, 
+    100% 25%
+  );
+}
+
+.trapezio {
+   background: none; 
+    clip-path: polygon(
+        10% 0%,     /* Ponto 1: 20% da esquerda no topo (X=20, Y=0) */
+        90% 0%,     /* Ponto 2: 80% da esquerda no topo (X=80, Y=0) */
+        100% 100%,  /* Ponto 3: Canto inferior direito (X=100, Y=100) */
+        0% 100%     /* Ponto 4: Canto inferior esquerdo (X=0, Y=100) */
+    );
+}
+
+.isosceles-trapezium {
+  clip-path: path('M35.4541 0.5L32.542 33.5H0.545898L3.45801 0.5H35.4541Z');
+  -webkit-clip-path: path('M35.4541 0.5L32.542 33.5H0.545898L3.45801 0.5H35.4541Z');
+}
+
+
+.title{
+  color: #FFF;
+text-align: center;
+font-family: Kanit;
+font-size: 5.875rem;
+font-style: italic;
+font-weight: 800;
+line-height: 100%; 
+/* background-color: ; */
+}
+
+.table-item{
+  clip-path: url(#table-bg);
+  background: linear-gradient(91deg, #256BDF 0.44%, #258AD7 61.86%, #25C7C8 100.24%);
+}
+
+.team-match-winer{
+  border: 1px solid #FFF;
+background: linear-gradient(157deg, #256BDF -155%, #2583D9 -71.05%, #258AD7 35.17%, #25C7C8 114.59%);
+}
+
+.menu-background{
+  background: #568EFF; 
+  clip-path: url(#menu-bg);
+  z-index: 2;
+  position: relative;
+}
+.menu-background::before {
+  background: rgba(4, 19, 50);
+  content: ""; 
+  position: absolute;  
+  top: 1.5px; 
+  left: 1.5px;
+  right: 1.5px;
+  bottom: 1.5px;   
+  z-index: -1; 
+  clip-path: url(#menu-bg); 
+  pointer-events: none;
+}

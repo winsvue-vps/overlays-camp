@@ -1,0 +1,105 @@
+name: Update Site via FTP
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Cache dependencies
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # Run lint
+      - name: Run lint
+        run: npm run lint
+
+      # Build project
+      - name: Build project
+        run: npm run build
+
+      # Install lftp and jq
+      - name: Install lftp and jq
+        run: sudo apt-get install -y lftp jq
+
+      # # Compress build directory for faster transfer
+      # - name: Compress build folder
+      #   run: |
+      #     if [ -d "build" ]; then
+      #       tar -czf build.tar.gz build
+      #     elif [ -d "dist" ]; then
+      #       tar -czf dist.tar.gz dist
+      #     else
+      #       tar -czf site.tar.gz *
+      #     fi
+
+      # # Upload only the compressed file via FTP
+      # - name: Deploy compressed file via FTP
+      #   env:
+      #     FTP_HOST: ${{ secrets.FTP_HOST }}
+      #     FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      #     FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      #   run: |
+      #     echo "Starting deployment of compressed file..."
+      #     if [ -f "build.tar.gz" ]; then
+      #       lftp -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST -p 21 -e "
+      #       set ssl:verify-certificate no;
+      #       put build.tar.gz -o /winspvp.gg/build.tar.gz;
+      #       bye
+      #       "
+      #     elif [ -f "dist.tar.gz" ]; then
+      #       lftp -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST -p 21 -e "
+      #       put dist.tar.gz -o /winspvp.gg/dist.tar.gz;
+      #       bye
+      #       "
+      #     else
+      #       lftp -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST -p 21 -e "
+      #       put site.tar.gz -o /winspvp.gg/site.tar.gz;
+      #       bye
+      #       "
+      #     fi
+
+      # Notify deployment status
+      - name: Notify Discord on success
+        if: success()
+        run: |
+          COMMITTER="${{ github.actor }}"
+          COMMITTER_PROFILE="https://github.com/${{ github.actor }}"
+          COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+          COMMIT_URL="${{ github.event.head_commit.url }}"
+          curl -X POST -H "Content-Type: application/json" -d "$(jq -n \
+            --arg content "✅ **Build and deploy succeeded** ✅\n**Workflow**: ${{ github.workflow }}\n**Repository**: ${{ github.repository }}\n\n> `Run`: [Details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\n> `Committer`: <${COMMITTER_PROFILE}>\n> `Commit Message`: $COMMIT_MESSAGE\n> `Commit URL`: $COMMIT_URL" \
+            '{content: $content}'
+          )' ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Notify Discord on failure
+        if: failure()
+        run: |
+          PR_TITLE="${{ github.event_name == 'pull_request' && github.event.pull_request.title || 'N/A' }}"
+          PR_CREATOR="${{ github.event_name == 'pull_request' && github.event.pull_request.user.login || 'N/A' }}"
+          PR_URL="${{ github.event_name == 'pull_request' && github.event.pull_request.html_url || 'N/A' }}"
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{
+            "content": "⚠️ **Build or deploy failed** ⚠️\n**Workflow**: ${{ github.workflow }}\n**Repository**: ${{ github.repository }}\n\n> `Run`: [Details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\n> `Pull Request`: '"$PR_TITLE"'\n> `Creator`: '"$PR_CREATOR"'\n> `PR URL`: [View PR]('"$PR_URL"').\n\n**Failure reason**:\n> `Resource Structure`: ${{ steps.resourceStructure.outcome }}."
+          }' ${{ secrets.DISCORD_WEBHOOK_URL }}
