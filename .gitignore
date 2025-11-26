@@ -32,6 +32,6 @@ dist-ssr
 .env.development
 .env.production
 
-build
+# build
 
 pnpm-lock.yaml
