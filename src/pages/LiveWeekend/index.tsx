@@ -13,7 +13,7 @@ import { FunctionComponent, SVGProps } from 'react';
 import MvpWinner from './components/MvpWinner';
 import MvpTable from './components/MvpTable'
 import ClassificationTable from './components/WeekClassificationTable'
-import SpecialClassificationTable from './components/SpecialWeekClassificationTable '
+import SpecialClassificationTable from './components/SpecialWeekClassificationTable'
 import RankingMvpBadge from './components/RankingMvpBadge'
 
 import { RequestRankingData } from './api';
