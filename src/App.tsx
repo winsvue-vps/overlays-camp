@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration } from 'react-router-dom';
 import Live from './pages/Live'
 import NewLive from './pages/NewLive'
+import LiveWeekend from './pages/LiveWeekend'
 import LiveBaseScreen from './pages/NewLive/components/Background'
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,13 +20,17 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/',
+        path: '/live1',
         element: <Live />,
       },
       {
         path: '/newlive',
         element: <NewLive />,
       },
+      {
+        path: '/',
+        element: <LiveWeekend />,
+      },      
     ],
   },
 ]);

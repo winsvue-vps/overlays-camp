@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 export type matchFilterTypes = "all" | "Q1" | "Q2" | "Q3" | "Q4" | "Q5" | "Q6";
-export type dataFilterTypes = "countdown" | "winner" | "placements" | "mvp" | "mvpwinner" | "mvptable" | "matchtable";
+export type dataFilterTypes = "countdown" | "winner" | "placements" | "mvp" | "mvpwinner" | "mvptable" | "matchtable" | "classificationtable" | "specialclassificationtable" | "rankingmvpbadge";
 
 export interface Team {
   guildId: number;

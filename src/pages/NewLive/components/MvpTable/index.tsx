@@ -62,7 +62,7 @@ export default function MvpTable(){
                 </div>
             </div>
             <div className="flex items-center justify-center w-[100%] h-[4rem] gap-[0.5rem]">
-                <div className="p-[0.1rem] w-[2.5rem] h-[2.5rem] bg-[#256BDF] flex justify-center items-center" >
+                <div className="p-[0.1rem] w-[4rem] h-[2.5rem] bg-[#256BDF] flex justify-center items-center" >
                     <div className="rounded-full size-[2.1rem] bg-contain bg-no-repeat flex justify-center items-center" style={{ backgroundImage: `url(${getAvatar(crew)})` }}></div>
                 </div>
                 <div className="flex table-item items-center justify-between gap-[1rem] w-[34rem] h-[2.5rem] bg-[#D9D9D914] pl-[1.75rem] pr-[3rem]" >
