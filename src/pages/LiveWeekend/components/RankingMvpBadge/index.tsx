@@ -55,7 +55,7 @@ export default function RankingMvpBadge() {
                             backgroundPositionX: 'center',                           
                         }}
                         >
-                            <span className="text-kanit text-[5rem] font-bold leading-relaxed absolute -top-[5rem] ">4º</span>
+                            <span className="text-kanit text-[3rem] font-bold leading-relaxed absolute -top-[4rem]">4º</span>
                     <div className="relative bottom-[.25rem]">
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
@@ -82,7 +82,7 @@ export default function RankingMvpBadge() {
                             backgroundPositionX: 'center',                           
                         }}
                         >
-                            <span className="text-kanit text-[5rem] font-bold leading-relaxed absolute -top-[5rem] ">2º</span>
+                            <span className="text-kanit text-[3rem] font-bold leading-relaxed absolute -top-[4rem]">2º</span>
                     <div className="relative bottom-[.25rem]">
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
@@ -110,7 +110,7 @@ export default function RankingMvpBadge() {
                            
                         }}
                         >
-                            <span className="text-kanit text-[5rem] font-bold leading-relaxed absolute -top-[5rem] ">1º</span>
+                            <span className="text-kanit text-[3rem] font-bold leading-relaxed absolute -top-[4rem]">1º</span>
 
                     <div className="relative bottom-[.25rem]">
                         <div
@@ -144,7 +144,7 @@ export default function RankingMvpBadge() {
                             backgroundPositionX: 'center',                           
                         }}
                         >
-                            <span className="text-kanit text-[5rem] font-bold leading-relaxed absolute -top-[5rem] ">3º</span>
+                            <span className="text-kanit text-[3rem] font-bold leading-relaxed absolute -top-[4rem]">3º</span>
                     <div className="relative bottom-[.25rem]">
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
@@ -171,7 +171,7 @@ export default function RankingMvpBadge() {
                             backgroundPositionX: 'center',                           
                         }}
                         >
-                            <span className="text-kanit text-[5rem] font-bold leading-relaxed absolute -top-[5rem] ">5º</span>
+                            <span className="text-kanit text-[3rem] font-bold leading-relaxed absolute -top-[4rem]">5º</span>
                     <div className="relative bottom-[.25rem]">
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
