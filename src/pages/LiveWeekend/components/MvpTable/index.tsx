@@ -66,7 +66,6 @@ export default function MvpTable() {
                             <span className="text-[1rem] font-bold">{label}</span>
                         </div>
                         <div className="flex items-center gap-[2.12rem]" >
-                            <p className="text-[1rem] font-bold text-[#fff] "> Abates </p>
                             <p className="text-[1rem] font-bold text-[#fff] "> {points} </p>
                         </div>
 
@@ -108,9 +107,8 @@ export default function MvpTable() {
                             <span>POS.</span>
                             <span>NOME</span>
                             <div className="w-full border-[.0625rem] border-solid"></div>
-                            <span>ABATES</span>
                             <span>
-                                PONTOS
+                                ABATES
                             </span>
                         </div>
 

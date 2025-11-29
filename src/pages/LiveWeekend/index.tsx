@@ -41,12 +41,12 @@ function TournamentFilter(){
   const dataFilters = [ 
     { text: "INICIO", value: "countdown" },
     { text: "VENCEDOR", value: "winner" },
-    { text: "VENCEDOR MVP", value: "mvpwinner" },
+    { text: "VENCEDOR QUEDA", value: "mvpwinner" },
     { text: "TABELA", value: "placements" },
-    { text: "TABELA MVP", value: "mvp" },
-    { text: "CLASSIFICAÇÃO SEMANAL", value: "classificationtable" },   
-    { text: "CLASSIFICAÇÃO ESPECIAL", value: "specialclassificationtable" },   
-    { text: "MVP BADGE", value: "rankingmvpbadge" },     
+    { text: "TOP 20 MVP GERAL", value: "mvp" },
+    // { text: "CLASSIFICAÇÃO SEMANAL", value: "classificationtable" },   
+    // { text: "CLASSIFICAÇÃO ESPECIAL", value: "specialclassificationtable" },   
+    { text: "MVP TOP 5", value: "rankingmvpbadge" },     
   ]
 
   const handleSwitchMatchFilter = (value: matchFilterTypes) => {

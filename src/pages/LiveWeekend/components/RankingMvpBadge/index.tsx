@@ -5,6 +5,13 @@ import ImageFrame from "../../assets/image-frame.svg?react";
 import BlueFlag from '../../assets/blue-flag.svg'
 import GoldenFlag from '../../assets/golden-flag.svg'
 
+function getUser(user: { name: string, tag: string, avatar: string, points: number, guild?: { avatar?: string } }) {
+    const label = (user?.name && user?.tag) ? (user.tag + " / " + user.name) : "N/A"
+    const points = user?.points ? (user?.points + " Abates") : "N/A"
+    const avatar = user?.guild?.avatar ? `${CDN_CREWS}/${user.guild.avatar}` : SERVER_LOGO
+    return { label, points, avatar }
+}
+
 export default function RankingMvpBadge() {
     const matchFilter = useTournamentStore((state) => state.matchFilter)
     const dataFilter = useTournamentStore((state) => state.dataFilter)
@@ -13,7 +20,7 @@ export default function RankingMvpBadge() {
 
     // TODO: mudar Dados
     const ranking = useTournamentStore((state) => {
-        return state.ranking[matchFilter]?.mvpwinner || {}
+        return state.ranking?.all?.rankingmvpbadge?.slice(0, 5) || []
     })
 
     let title = "MVP"
@@ -29,10 +36,12 @@ export default function RankingMvpBadge() {
         return <div className={wrapperClass}></div>
     }
 
-    const label = (ranking.name && ranking.tag) ? (ranking.tag + " / " + ranking.name) : "N/A"
-    const points = ranking[1]?.points ? (ranking[1]?.points + " Abates") : "N/A"
-    const avatar = ranking[1]?.guild?.avatar ? `${CDN_CREWS}/${ranking[1].guild.avatar}` : SERVER_LOGO
-    // const name = ranking[1]?.name
+    const top1 = getUser(ranking[0])
+    const top2 = getUser(ranking[1])
+    const top3 = getUser(ranking[2])
+    const top4 = getUser(ranking[3])
+    const top5 = getUser(ranking[4])
+
 
     return (
         <div className={wrapperClass}>
@@ -43,7 +52,7 @@ export default function RankingMvpBadge() {
                     <LineWithShapedBorder className="w-[6.31rem] scale-x-[-1]" />
                 </div>
                 <h1 className="text-[6rem] font-normal text-nowrap whitespace-nowrap text-bignoodle">
-                    MVP DA PARTIDA
+                    PODIUM MVP
                 </h1>
             </div>
             <div className="flex  items-start justify-center relative pt-[6rem] gap-[1.5rem]">
@@ -60,20 +69,21 @@ export default function RankingMvpBadge() {
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
                             style={{
-                                backgroundImage: `url(${avatar})`
+                                backgroundImage: `url(${top4.avatar})`
                             }}
                         >
                         </div>
                         <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
-                            <span className="text-kanit text-[1.29rem] font-bold leading-relaxed">{label}</span>
+                            <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top4.label}</span>
 
                             <div className="flex items-center justify-center w-[9.5rem] h-[2.25rem] ">
-                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{points}</span>
+                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{top4.points}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div className="w-[16rem] h-[31rem] flex flex-col items-center justify-start pt-[7rem] relative"
                  style={{
                             backgroundImage: `url(${BlueFlag})`,
@@ -87,20 +97,21 @@ export default function RankingMvpBadge() {
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
                             style={{
-                                backgroundImage: `url(${avatar})`
+                                backgroundImage: `url(${top2.avatar})`
                             }}
                         >
                         </div>
                         <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
-                            <span className="text-kanit text-[1.29rem] font-bold leading-relaxed">{label}</span>
+                            <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top2.label}</span>
 
                             <div className="flex items-center justify-center w-[9.5rem] h-[2.25rem] ">
-                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{points}</span>
+                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{top2.points}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div className="w-[16rem] h-[36rem] flex flex-col items-center justify-start pt-[5rem] relative "
                  style={{
                             backgroundImage: `url(${GoldenFlag})`,
@@ -116,16 +127,16 @@ export default function RankingMvpBadge() {
                         <div
                             className="absolute top-[5.6rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[8.3rem] h-[9.6rem] bg-contain bg-no-repeat"
                             style={{
-                                backgroundImage: `url(${avatar})`
+                                backgroundImage: `url(${top1.avatar})`
                             }}
                         >
                         </div>
                         <ImageFrame className="z-10 w-[10rem] h-[11rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
-                            <span className="text-kanit text-[1.29rem] font-bold leading-relaxed">{label}</span>
+                            <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top1.label}</span>
 
                             <div className="flex items-center justify-center w-[9.5rem] h-[2.25rem] ">
-                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[3rem] ">{points}</span>
+                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[3rem] ">{top1.points}</span>
                             </div>
 
                               <div className="points-clip-path flex items-center justify-center w-[7rem] h-[1.5rem] bg-[#C74E88] mt-[1.5rem]">
@@ -136,6 +147,7 @@ export default function RankingMvpBadge() {
                         </div>
                     </div>
                 </div>
+
                 <div className="w-[16rem] h-[31rem] flex flex-col items-center justify-start pt-[7rem] relative"
                  style={{
                             backgroundImage: `url(${BlueFlag})`,
@@ -149,20 +161,21 @@ export default function RankingMvpBadge() {
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
                             style={{
-                                backgroundImage: `url(${avatar})`
+                                backgroundImage: `url(${top3.avatar})`
                             }}
                         >
                         </div>
                         <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
-                            <span className="text-kanit text-[1.29rem] font-bold leading-relaxed">{label}</span>
+                            <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top3.label}</span>
 
                             <div className="flex items-center justify-center w-[9.5rem] h-[2.25rem] ">
-                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{points}</span>
+                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{top3.points}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div className="w-[16rem] h-[31rem] flex flex-col items-center justify-start pt-[7rem] relative"
                  style={{
                             backgroundImage: `url(${BlueFlag})`,
@@ -176,16 +189,16 @@ export default function RankingMvpBadge() {
                         <div
                             className="absolute top-[5rem] left-1/2 -translate-x-1/2 -translate-y-1/2 hex w-[6.6rem] h-[7.68rem] bg-contain bg-no-repeat"
                             style={{
-                                backgroundImage: `url(${avatar})`
+                                backgroundImage: `url(${top5.avatar})`
                             }}
                         >
                         </div>
                         <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
-                            <span className="text-kanit text-[1.29rem] font-bold leading-relaxed">{label}</span>
+                            <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top5.label}</span>
 
                             <div className="flex items-center justify-center w-[9.5rem] h-[2.25rem] ">
-                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{points}</span>
+                                <span className="text-bignoodle text-nowrap text-[#FFCA2AF5] font-normal text-[2.5rem] ">{top5.points}</span>
                             </div>
                         </div>
                     </div>
