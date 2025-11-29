@@ -11,7 +11,7 @@ export default function Winner(){
     const matchFilter = useTournamentStore((state) => state.matchFilter)
     const dataFilter = useTournamentStore((state) => state.dataFilter)
     const isWinnerCategory = dataFilter === 'mvpwinner'
-    const wrapperClass = `fixed left-1/2 -translate-x-1/2 inset-0 flex flex-col items-center justify-center transition-all duration-700 ease-in-out -z-50 ${isWinnerCategory ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-[150%] pointer-events-none'}`;
+    const wrapperClass = `fixed top-[-20rem] -translate-y-1/2  left-1/2 -translate-x-1/2 inset-0 flex flex-col items-center justify-center transition-all duration-700 ease-in-out -z-50 ${isWinnerCategory ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-[150%] pointer-events-none'}`;
     
     const ranking = useTournamentStore((state) => {
         return state.ranking[matchFilter]?.mvpwinner || {}

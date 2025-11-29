@@ -93,7 +93,7 @@ export default function SpecialClassificationTable(){
                     <p className="text-[1.125rem] font-semibold pre-title" >ORDENADA POR COLOCAÇÃO</p>
                     <h1 className="table-title whitespace-nowrap">
                         <span>
-                           CLASSIFICADOS WEEKENDE <br/>SPECIAL EDICTION
+                           Classificados Weekend <br/> Christmas Edition
                         </span>
                     </h1>
                     <HeaderEdge className="absolute -top-[1.5rem] -left-[1.5rem]" />

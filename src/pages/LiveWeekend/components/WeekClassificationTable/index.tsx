@@ -10,7 +10,7 @@ import CheckIcon from "../../assets/check-icon.svg?react"
 export default function ClassificationTable() {
     const dataFilter = useTournamentStore((state) => state.dataFilter)
     const isMvpRankingCategory = (['classificationtable'].includes(dataFilter))
-    const wrapperClass = `fixed top-[33rem] -translate-y-1/2  inset-0 flex flex-col items-center justify-center transition-all duration-700 ease-in-out 
+    const wrapperClass = `fixed top-[31rem] -translate-y-1/2  inset-0 flex flex-col items-center justify-center transition-all duration-700 ease-in-out 
     ${isMvpRankingCategory ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 translate-x-[150%] pointer-events-none'}`;
 
     const [section, setSection] = useState(1)
