@@ -4,7 +4,7 @@ import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration } from '
 import Live from './pages/Live'
 import NewLive from './pages/NewLive'
 import LiveWeekend from './pages/LiveWeekend'
-import LiveBaseScreen from './pages/NewLive/components/Background'
+import LiveBaseScreen from './pages/LiveWeekend/components/Background'
 import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
