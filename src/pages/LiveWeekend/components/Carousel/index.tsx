@@ -36,9 +36,11 @@ export default function Carousel() {
     <div className="w-[40rem] h-[11rem] fixed bottom-[3rem] left-1/2 -translate-x-1/2 -translate-y-1/2 carousel-gradient">
       <div className="carousel-container">
         <div className="carousel-track">
-          { teams.map(({ avatar }, index) => {
-            return <CarouselItem key={index} avatar={avatar} />
-          }) }
+           { Array.isArray(teams) && teams.length > 0 && 
+            teams.map(({ avatar }, index) => {
+              return <CarouselItem key={index} avatar={avatar} />
+            }) 
+          }
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ export default function MvpTable() {
     for (let i = 0; i < 20; i++) {
         const crew = ranking[i]
         const label = crew?.name ? (crew.tag + " / " + crew.name) : "N/A"
-        const points = crew?.points || "N/A"
+        const points = crew?.points || "0"
 
         rankingTable.push(
             <div className="relative flex flex-col items-center justify-center w-full h-[4rem]">

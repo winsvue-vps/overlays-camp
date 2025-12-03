@@ -1,5 +1,5 @@
 import { useTournamentStore } from "@/stores/useTournamentStore";
-import { CDN_AVATARS,  SERVER_LOGO } from "../../lib/utils";
+import { CDN_CREWS,  SERVER_LOGO } from "../../lib/utils";
 import ImageFrame from "../../assets/image-frame.svg?react";
 import WinnerBg from "../../assets/winner-bg.svg?react"
 import LineWithShapedBorder from "../../assets/line-with-shaped-border.svg?react";
@@ -11,8 +11,11 @@ export default function Winner(){
     const isWinnerCategory = dataFilter === 'winner'
     const wrapperClass = `fixed  top-[-20rem] -translate-y-1/2  left-1/2 -translate-x-1/2 inset-0 flex flex-col items-center justify-center transition-all duration-700 ease-in-out ${isWinnerCategory ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-[150%] pointer-events-none'}`;
     
-    const ranking = useTournamentStore((state) => {
-        return state.ranking[matchFilter]?.mvpwinner || {}
+    // const ranking = useTournamentStore((state) => {
+    //     return state.ranking[matchFilter]?.mvpwinner || {}
+    // })
+      const ranking = useTournamentStore((state) => {
+        return state.ranking[matchFilter]?.winner?.winner || {}
     })
 
     let title = "VENCEDOR"
@@ -28,10 +31,10 @@ export default function Winner(){
         return <div className={wrapperClass}></div>
     }
 
-     const label = (ranking.name && ranking.tag) ? (ranking.tag + " / " + ranking.name) : "N/A" 
-    const points = ranking[1]?.points ? (ranking[1]?.points + " Pontos") : "N/A" 
-    const avatar = ranking[1]?.avatar ? `${CDN_AVATARS}/${ranking[1]?.avatar}.webp` : SERVER_LOGO 
- 
+    const label = (ranking.name && ranking.tag) ? (ranking.tag + " / " + ranking.name) : "N/A" 
+    const points = typeof ranking.points == "number" ? (ranking.points + " Pontos") : "N/A" 
+    const avatar = ranking.avatar ? `${CDN_CREWS}/${ranking.avatar}` : SERVER_LOGO 
+    
     return (
         <div className={wrapperClass}>
             <div>    
@@ -63,7 +66,7 @@ export default function Winner(){
                     >                                               
                     </div>
 
-                    <ImageFrame className="z-10" />
+                    <ImageFrame className="z-10 w-[14rem] h-[12rem]" />
                       <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                     <span className="ftext-kanit text-[1.75rem] font-bold leading-relaxed">{label}</span>
 

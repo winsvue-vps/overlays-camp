@@ -73,7 +73,7 @@ export default function RankingMvpBadge() {
                             }}
                         >
                         </div>
-                        <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
+                        <ImageFrame className="z-10 w-[13rem] h-[9rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                             <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top4.label}</span>
 
@@ -101,7 +101,7 @@ export default function RankingMvpBadge() {
                             }}
                         >
                         </div>
-                        <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
+                        <ImageFrame className="z-10 w-[13rem] h-[9rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                             <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top2.label}</span>
 
@@ -131,7 +131,7 @@ export default function RankingMvpBadge() {
                             }}
                         >
                         </div>
-                        <ImageFrame className="z-10 w-[10rem] h-[11rem]" />
+                        <ImageFrame className="z-10 w-[13rem] h-[11rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                             <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top1.label}</span>
 
@@ -165,7 +165,7 @@ export default function RankingMvpBadge() {
                             }}
                         >
                         </div>
-                        <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
+                        <ImageFrame className="z-10 w-[13rem] h-[9rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                             <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top3.label}</span>
 
@@ -193,7 +193,7 @@ export default function RankingMvpBadge() {
                             }}
                         >
                         </div>
-                        <ImageFrame className="z-10 w-[10rem] h-[10rem]" />
+                        <ImageFrame className="z-10 w-[13rem] h-[9rem]" />
                         <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                             <span className="ftext-kanit text-[1.29rem] font-bold leading-relaxed">{top5.label}</span>
 

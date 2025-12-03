@@ -75,7 +75,7 @@ export default function RankingTable() {
     for (let i = 0; i < 20; i++) {
         const crew = ranking[i]
         const label = crew?.name ? (crew.tag + " / " + crew.name) : "N/A"
-        const points = crew?.points || "N/A"
+        const points = crew?.points || "0"
 
         rankingTable.push(
             <div className="relative flex flex-col items-center justify-center w-full h-[4rem]">
@@ -94,7 +94,7 @@ export default function RankingTable() {
                             <span className="text-[1rem] font-bold">{label}</span>
                         </div>
                         <div className="flex items-center gap-[2.12rem]" >
-                            <p className="text-[1rem] font-bold text-[#fff] "> Abates </p>
+                            {/* <p className="text-[1rem] font-bold text-[#fff] "> Abates </p> */}
                             <p className="text-[1rem] font-bold text-[#fff] "> {points} </p>
                         </div>
 
@@ -139,7 +139,7 @@ export default function RankingTable() {
                             <span>POS.</span>
                             <span>NOME</span>
                             <div className="w-full border-[.0625rem] border-solid"></div>
-                            <span>ABATES</span>
+                            {/* <span>ABATES</span> */}
                             <span>
                                 PONTOS
                             </span>

@@ -5,8 +5,6 @@ import ImageFrame from "../../assets/image-frame.svg?react";
 import WinnerBg from "../../assets/winner-bg.svg?react"
 
 
-
-
 export default function Winner(){
     const matchFilter = useTournamentStore((state) => state.matchFilter)
     const dataFilter = useTournamentStore((state) => state.dataFilter)
@@ -30,7 +28,7 @@ export default function Winner(){
         return <div className={wrapperClass}></div>
     }
     
-    const label = (ranking.name && ranking.tag) ? (ranking.tag + " / " + ranking.name) : "N/A" 
+     const label = (ranking[1]?.name && ranking[1]?.tag) ? (ranking[1]?.tag + " / " + ranking[1]?.name) : "N/A"
     const points = ranking[1]?.points ? (ranking[1]?.points + " Abates") : "N/A" 
     const avatar = ranking[1]?.guild?.avatar ? `${CDN_CREWS}/${ranking[1].guild.avatar}` : SERVER_LOGO 
     // const name = ranking[1]?.name
@@ -65,7 +63,7 @@ export default function Winner(){
                     >                                               
                     </div>
 
-                    <ImageFrame className="z-10" />
+                    <ImageFrame className="z-10 w-[19rem] h-[12rem]" />
                       <div className="flex flex-col items-center justify-center gap-[.75rem] mt-[1rem]">
                     <span className="ftext-kanit text-[1.75rem] font-bold leading-relaxed">{label}</span>
 
